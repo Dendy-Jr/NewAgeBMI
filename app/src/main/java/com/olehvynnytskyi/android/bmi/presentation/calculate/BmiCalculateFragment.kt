@@ -2,6 +2,7 @@ package com.olehvynnytskyi.android.bmi.presentation.calculate
 
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -17,6 +18,7 @@ class BmiCalculateFragment : Fragment(R.layout.fragment_bmi_calculate) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setToolbarTitle()
         onBind()
     }
 
@@ -31,5 +33,12 @@ class BmiCalculateFragment : Fragment(R.layout.fragment_bmi_calculate) {
         npGender.minValue = 0
         npGender.maxValue = gender.size - 1
         npGender.displayedValues = gender
+    }
+
+    //TODO Create BaseFragment
+    private fun setToolbarTitle() {
+        requireActivity().findViewById<TextView>(R.id.tvTitleToolbar).apply {
+            text = getString(R.string.add_bmi_details)
+        }
     }
 }

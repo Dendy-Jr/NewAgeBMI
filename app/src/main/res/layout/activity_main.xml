@@ -34,9 +34,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="?attr/fontRalewayRegular"
-                android:text="@string/add_bmi_details"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                tools:text="@string/add_bmi_details" />
 
         </com.google.android.material.appbar.MaterialToolbar>
 
