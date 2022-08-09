@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">OlehVynnytskyi</string>
     <string name="add_bmi_details">Add BMI Details</string>
+    <string name="calculate_header">Enter Personal Detail</string>
+    <string name="name">Name</string>
+    <string name="calculate_title">Calculate Your Body Mass Index</string>
+    <string name="weight">Weight</string>
+    <string name="gender">Gender</string>
+    <string name="height">Height</string>
+    <string name="calculate">Calculate</string>
 </resources>

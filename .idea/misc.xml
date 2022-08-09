@@ -4,9 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Oleh/AndroidStudioProjects/NewAgeBMI/app/src/main/res/drawable/bg_basic.xml" value="0.217" />
+        <entry key="..\:/Users/Oleh/AndroidStudioProjects/NewAgeBMI/app/src/main/res/drawable/bg_button.xml" value="0.18" />
+        <entry key="..\:/Users/Oleh/AndroidStudioProjects/NewAgeBMI/app/src/main/res/drawable/bg_edittext.xml" value="0.206" />
         <entry key="..\:/Users/Oleh/AndroidStudioProjects/NewAgeBMI/app/src/main/res/drawable/ic_arow.xml" value="0.206" />
         <entry key="..\:/Users/Oleh/AndroidStudioProjects/NewAgeBMI/app/src/main/res/drawable/ic_bg_bmi.xml" value="0.1945" />
         <entry key="..\:/Users/Oleh/AndroidStudioProjects/NewAgeBMI/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/Oleh/AndroidStudioProjects/NewAgeBMI/app/src/main/res/layout/fragment_bmi_calculate.xml" value="0.264" />
+        <entry key="..\:/Users/Oleh/AndroidStudioProjects/NewAgeBMI/app/src/main/res/layout/fragment_bmi_details.xml" value="0.253125" />
       </map>
     </option>
   </component>

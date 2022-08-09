@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="colorMain" format="color" />
+    <attr name="colorSecondary" format="color" />
+    <attr name="colorDarkGray" format="color" />
     <attr name="colorGradientStart" format="color" />
     <attr name="colorGradientEnd" format="color" />
 
     <attr name="fontRalewayRegular" format="reference" />
+    <attr name="fontRalewayBold" format="reference" />
+    <attr name="fontPoppinsLight" format="reference" />
+    <attr name="fontPoppinsRegular" format="reference" />
+    <attr name="fontPoppinsBold" format="reference" />
 </resources>
