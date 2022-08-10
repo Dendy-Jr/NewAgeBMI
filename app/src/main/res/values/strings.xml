@@ -12,4 +12,5 @@
     <string name="body_mass_index">BODY MASS INDEX</string>
     <string name="share">Share</string>
     <string name="rate">Rate</string>
+    <string name="interstitial_ad_id">ca-app-pub-3940256099942544/1033173712</string>
 </resources>
