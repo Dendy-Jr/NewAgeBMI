@@ -33,6 +33,11 @@ class MainActivity : AppCompatActivity() {
             appBarLayout.isVisible = true
             ivLogo.isVisible = false
             navContainer.isVisible = true
+
+            ivNavigateBack.setOnClickListener {
+                onBackPressed()
+            }
+
             getNavController()
         }
     }

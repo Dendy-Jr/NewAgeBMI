@@ -17,5 +17,17 @@
         android:id="@+id/bmiDetailsFragment"
         android:name="com.olehvynnytskyi.android.bmi.presentation.details.BmiDetailsFragment"
         android:label="BmiDetailsFragment"
-        tools:layout="@layout/fragment_bmi_details" />
+        tools:layout="@layout/fragment_bmi_details" >
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="weight"
+            app:argType="integer" />
+        <argument android:name="height"
+            app:argType="integer" />
+        <argument
+            android:name="gender"
+            app:argType="com.olehvynnytskyi.android.bmi.domain.model.Person$Gender" />
+    </fragment>
 </navigation>

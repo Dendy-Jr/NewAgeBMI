@@ -3,6 +3,7 @@ package com.olehvynnytskyi.android.bmi.presentation.calculate
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.gms.ads.AdRequest
@@ -31,19 +32,45 @@ class BmiCalculateFragment : BaseFragment<BmiCalculateViewModel>(R.layout.fragme
     }
 
     private fun onBind() = with(binding) {
-        npWeight.minValue = 30
-        npWeight.maxValue = 150
+        npWeight.apply {
+            value = 30
+            minValue = 30
+            maxValue = 150
+        }
 
-        npHeight.minValue = 100
-        npHeight.maxValue = 250
+        npHeight.apply {
+            value = 100
+            minValue = 100
+            maxValue = 250
+        }
 
-        val gender = arrayOf("Male", "Female")
-        npGender.minValue = 0
-        npGender.maxValue = gender.size - 1
-        npGender.displayedValues = gender
+        val gender = arrayOf(getString(R.string.male), getString(R.string.female))
+        npGender.apply {
+            value = 0
+            minValue = 0
+            maxValue = gender.size - 1
+            displayedValues = gender
+        }
 
         btnCalculate.setOnClickListener {
             showInterstitialAd()
+        }
+
+        editText.addTextChangedListener { editText ->
+            if (editText.toString().trim().isBlank()) return@addTextChangedListener
+            viewModel.getName(editText.toString())
+        }
+
+        npWeight.setOnValueChangedListener { _, _, newValue ->
+            viewModel.getWeight(newValue)
+        }
+
+        npHeight.setOnValueChangedListener { _, _, newValue ->
+            viewModel.getHeight(newValue)
+        }
+
+        npGender.setOnValueChangedListener { _, _, newValue ->
+            viewModel.getGender(newValue)
         }
     }
 
@@ -79,7 +106,7 @@ class BmiCalculateFragment : BaseFragment<BmiCalculateViewModel>(R.layout.fragme
         if (mInterstitialAd != null) {
             mInterstitialAd?.show(requireActivity())
             mInterstitialAd = null
-        } else {
+        } else if (binding.editText.text.isNullOrBlank().not()) {
             viewModel.toCalculateClicked()
             Timber.d("The interstitial ad wasn't ready yet.")
         }

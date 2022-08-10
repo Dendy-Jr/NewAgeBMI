@@ -13,4 +13,19 @@
     <string name="share">Share</string>
     <string name="rate">Rate</string>
     <string name="interstitial_ad_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="bmi_details_greeting">HELLO %s, YOU ARE %s</string>
+    <string name="bmi_details_range">Normal BMI range: %skg/m2 - %skg/m2</string>
+    <string name="bmi_ponderal_index">Ponderal Index: %skg/m3</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="underweight_severe_thinness">UNDERWEIGHT (SEVERE THINNESS)</string>
+    <string name="Underweight_moderate_thinness">UNDERWEIGHT (MODERATE THINNESS)</string>
+    <string name="underweight_mild_thinness">UNDERWEIGHT (MILD THINNESS)</string>
+    <string name="normal_range">NORMAL</string>
+    <string name="overweight_pre_obese">OVERWEIGHT (PRE-OBESE)</string>
+    <string name="obese_class_1">OBESE (CLASS I)</string>
+    <string name="obese_class_2">OBESE (CLASS II)</string>
+    <string name="obese_class_3">OBESE (CLASS III)</string>
+    <string name="normal_bmi_range">Normal BMI range: 18.5kg/m2 – 25kg/m2</string>
+    <string name="install">INSTALL</string>
 </resources>
