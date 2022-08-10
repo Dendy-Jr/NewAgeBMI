@@ -10,7 +10,7 @@
         android:label="BmiCalculateFragment"
         tools:layout="@layout/fragment_bmi_calculate">
         <action
-            android:id="@+id/action_bmiCalculateFragment_to_bmiDetailsFragment"
+            android:id="@+id/toBmiDetailsScreen"
             app:destination="@id/bmiDetailsFragment" />
     </fragment>
     <fragment

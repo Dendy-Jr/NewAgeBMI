@@ -3,24 +3,23 @@ package com.olehvynnytskyi.android.bmi.presentation.calculate
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.olehvynnytskyi.android.bmi.R
+import com.olehvynnytskyi.android.bmi.core.base.BaseFragment
 import com.olehvynnytskyi.android.bmi.databinding.FragmentBmiCalculateBinding
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
 @AndroidEntryPoint
-class BmiCalculateFragment : Fragment(R.layout.fragment_bmi_calculate) {
+class BmiCalculateFragment : BaseFragment<BmiCalculateViewModel>(R.layout.fragment_bmi_calculate) {
 
     private val binding: FragmentBmiCalculateBinding by viewBinding()
-    private val viewModel: BmiCalculateViewModel by viewModels()
+    override val viewModel: BmiCalculateViewModel by viewModels()
 
     private var mInterstitialAd: InterstitialAd? = null
 
@@ -48,7 +47,6 @@ class BmiCalculateFragment : Fragment(R.layout.fragment_bmi_calculate) {
         }
     }
 
-    //TODO Create BaseFragment
     private fun setToolbarTitle() {
         requireActivity().findViewById<TextView>(R.id.tvTitleToolbar).apply {
             text = getString(R.string.add_bmi_details)
@@ -82,7 +80,7 @@ class BmiCalculateFragment : Fragment(R.layout.fragment_bmi_calculate) {
             mInterstitialAd?.show(requireActivity())
             mInterstitialAd = null
         } else {
-            findNavController().navigate(BmiCalculateFragmentDirections.actionBmiCalculateFragmentToBmiDetailsFragment())
+            viewModel.toCalculateClicked()
             Timber.d("The interstitial ad wasn't ready yet.")
         }
     }
