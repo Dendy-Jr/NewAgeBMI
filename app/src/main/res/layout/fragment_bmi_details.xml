@@ -7,9 +7,13 @@
     tools:context=".presentation.details.BmiDetailsFragment">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
         android:layout_width="300dp"
-        android:layout_height="400dp"
-        android:layout_marginTop="58dp"
+        android:layout_height="362dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="12dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toTopOf="@id/nativeAdView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -37,6 +41,7 @@
                 android:fontFamily="?attr/fontRalewaySemiBold"
                 android:text="@string/body_mass_index"
                 android:textColor="?attr/colorView"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/viewTop" />
@@ -55,7 +60,6 @@
                 android:id="@+id/tvFractionalResult"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:background="@drawable/bg_line"
                 android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/white"
@@ -67,15 +71,19 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvGreeting"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="?attr/fontPoppinsBold"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textColor="@color/white"
-                android:textSize="11sp"
+                android:textSize="8sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvFractionalResult"
+                tools:ignore="SmallSp"
                 tools:text="HELLO OLIVIA , YOU ARE NORMAL" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -84,12 +92,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="?attr/fontRalewayRegular"
+                android:text="@string/normal_bmi_range"
                 android:textColor="@color/white"
-                android:textSize="11sp"
+                android:textSize="8sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvGreeting"
-                tools:text="Normal BMI range: 18.5kg/m2 - 25kg/m2" />
+                tools:ignore="SmallSp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvPonderalIndex"
@@ -98,13 +107,14 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="?attr/fontRalewayRegular"
                 android:textColor="@color/white"
-                android:textSize="11sp"
+                android:textSize="8sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvBmiRange"
+                tools:ignore="SmallSp"
                 tools:text="Ponderal Index: 10.64kg/m3" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnShare"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="wrap_content"
@@ -149,4 +159,109 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.gms.ads.nativead.NativeAdView
+        android:id="@+id/nativeAdView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginBottom="9dp"
+        android:background="@drawable/bg_add_mob"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/adIcon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_launcher_background" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/adHeadline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:fontFamily="?attr/fontRobotoMedium"
+                android:textColor="?attr/colorEerieBlack"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/adIcon"
+                app:layout_constraintTop_toTopOf="@id/adIcon"
+                tools:text="Website name" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/adBody"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="?attr/fontRobotoRegular"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/adIcon"
+                app:layout_constraintTop_toBottomOf="@id/adHeadline"
+                tools:text="The Vocabulary is an app with lots of vocabulary to study." />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/adBtnAction"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="9dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="9dp"
+                android:backgroundTint="#FFC107"
+                android:fontFamily="?attr/fontRobotoBold"
+                android:text="@string/install"
+                android:textColor="#212121"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/adIcon" />
+
+            <View
+                android:id="@+id/adView"
+                android:layout_width="26sp"
+                android:layout_height="16sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_details_ad"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="?attr/fontRobotoBold"
+                android:text="@string/ad"
+                android:textColor="#212121"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/adView"
+                app:layout_constraintEnd_toEndOf="@id/adView"
+                app:layout_constraintStart_toStartOf="@id/adView"
+                app:layout_constraintTop_toTopOf="@id/adView" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/adImageGP"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="6dp"
+                android:src="@drawable/ic_google_play"
+                app:layout_constraintEnd_toStartOf="@id/adView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.gms.ads.nativead.NativeAdView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

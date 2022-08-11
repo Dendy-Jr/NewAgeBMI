@@ -14,7 +14,7 @@
         android:fontFamily="?attr/fontRalewayRegular"
         android:text="@string/calculate_header"
         android:textColor="?attr/colorMain"
-        android:textSize="28sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -47,7 +47,7 @@
         android:fontFamily="?attr/fontPoppinsLight"
         android:text="@string/calculate_title"
         android:textColor="?attr/colorSecondary"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editText" />
@@ -59,6 +59,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="20dp"
         android:text="@string/weight"
+        android:textSize="14sp"
         android:theme="@style/BMITextViewTheme"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTitle" />
@@ -70,6 +71,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="36dp"
         android:text="@string/gender"
+        android:textSize="14sp"
         android:theme="@style/BMITextViewTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTitle" />
@@ -80,6 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/height"
+        android:textSize="14sp"
         android:theme="@style/BMITextViewTheme"
         app:layout_constraintEnd_toStartOf="@id/tvGender"
         app:layout_constraintStart_toEndOf="@id/tvWeight"
@@ -96,28 +99,83 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvHeight">
 
-        <NumberPicker
-            android:id="@+id/npWeight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginStart="14dp"
-            android:theme="@style/BMINumberPickerTheme" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <NumberPicker
-            android:id="@+id/npHeight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:theme="@style/BMINumberPickerTheme" />
+            <NumberPicker
+                android:id="@+id/npWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="14dp"
+                android:theme="@style/BMINumberPickerTheme"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <NumberPicker
-            android:id="@+id/npGender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginEnd="14dp"
-            android:theme="@style/BMINumberPickerTheme" />
+            <View
+                android:id="@+id/viewWeight"
+                android:layout_width="0dp"
+                android:layout_height="5dp"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/bg_number_picker_line"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/npWeight"
+                app:layout_constraintEnd_toEndOf="@id/npWeight"
+                app:layout_constraintStart_toStartOf="@id/npWeight"
+                app:layout_constraintTop_toTopOf="@id/npWeight"
+                tools:visibility="visible" />
+
+            <NumberPicker
+                android:id="@+id/npHeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:theme="@style/BMINumberPickerTheme"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/viewHeight"
+                android:layout_width="0dp"
+                android:layout_height="5dp"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/bg_number_picker_line"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/npHeight"
+                app:layout_constraintEnd_toEndOf="@id/npHeight"
+                app:layout_constraintStart_toStartOf="@id/npHeight"
+                app:layout_constraintTop_toTopOf="@id/npHeight"
+                tools:visibility="visible" />
+
+            <NumberPicker
+                android:id="@+id/npGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="14dp"
+                android:theme="@style/BMINumberPickerTheme"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/viewGender"
+                android:layout_width="0dp"
+                android:layout_height="5dp"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/bg_number_picker_line"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/npGender"
+                app:layout_constraintEnd_toEndOf="@id/npGender"
+                app:layout_constraintStart_toStartOf="@id/npGender"
+                app:layout_constraintTop_toTopOf="@id/npGender"
+                tools:visibility="visible" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -131,6 +189,7 @@
         android:fontFamily="?attr/fontRalewayBold"
         android:text="@string/calculate"
         android:textAllCaps="false"
+        android:textSize="14sp"
         app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

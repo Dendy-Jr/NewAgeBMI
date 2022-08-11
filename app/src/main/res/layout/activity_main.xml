@@ -26,7 +26,8 @@
                 android:id="@+id/ivNavigateBack"
                 android:layout_width="15dp"
                 android:layout_height="25dp"
-                android:src="@drawable/ic_arow" />
+                android:background="?attr/selectableItemBackground"
+                android:src="@drawable/ic_arrow" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTitleToolbar"

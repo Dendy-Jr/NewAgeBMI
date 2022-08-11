@@ -4,12 +4,18 @@
     <attr name="colorSecondary" format="color" />
     <attr name="colorDarkGray" format="color" />
     <attr name="colorView" format="color" />
+    <attr name="colorPurpleHeart" format="color" />
+    <attr name="colorVividOrange" format="color" />
     <attr name="colorGradientStart" format="color" />
     <attr name="colorGradientEnd" format="color" />
+    <attr name="colorEerieBlack" format="color" />
 
     <attr name="fontRalewayRegular" format="reference" />
     <attr name="fontRalewayBold" format="reference" />
     <attr name="fontRalewaySemiBold" format="reference" />
+    <attr name="fontRobotoRegular" format="reference" />
+    <attr name="fontRobotoMedium" format="reference" />
+    <attr name="fontRobotoBold" format="reference" />
     <attr name="fontPoppinsLight" format="reference" />
     <attr name="fontPoppinsRegular" format="reference" />
     <attr name="fontPoppinsBold" format="reference" />

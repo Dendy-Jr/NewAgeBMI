@@ -13,6 +13,7 @@
     <string name="share">Share</string>
     <string name="rate">Rate</string>
     <string name="interstitial_ad_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="admob_ad_unit_id">ca-app-pub-3940256099942544/2247696110</string>
     <string name="bmi_details_greeting">HELLO %s, YOU ARE %s</string>
     <string name="bmi_details_range">Normal BMI range: %skg/m2 - %skg/m2</string>
     <string name="bmi_ponderal_index">Ponderal Index: %skg/m3</string>
@@ -28,4 +29,7 @@
     <string name="obese_class_3">OBESE (CLASS III)</string>
     <string name="normal_bmi_range">Normal BMI range: 18.5kg/m2 – 25kg/m2</string>
     <string name="install">INSTALL</string>
+    <string name="ad">Ad</string>
+    <string name="error_occurred">Error occurred!</string>
+    <string name="authorities_fileprovider">com.olehvynnytskyi.android.bmi.provider</string>
 </resources>
