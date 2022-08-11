@@ -32,4 +32,6 @@
     <string name="ad">Ad</string>
     <string name="error_occurred">Error occurred!</string>
     <string name="authorities_fileprovider">com.olehvynnytskyi.android.bmi.provider</string>
+    <string name="google_play_package">com.android.vending</string>
+    <string name="google_play_url">https://play.google.com</string>
 </resources>

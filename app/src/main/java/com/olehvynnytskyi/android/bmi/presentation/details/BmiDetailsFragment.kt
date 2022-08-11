@@ -23,6 +23,7 @@ import com.olehvynnytskyi.android.bmi.R
 import com.olehvynnytskyi.android.bmi.core.base.BaseFragment
 import com.olehvynnytskyi.android.bmi.core.extensions.collectWithLifecycle
 import com.olehvynnytskyi.android.bmi.core.extensions.fontSize
+import com.olehvynnytskyi.android.bmi.core.extensions.openApplication
 import com.olehvynnytskyi.android.bmi.databinding.FragmentBmiDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
@@ -67,6 +68,13 @@ class BmiDetailsFragment : BaseFragment<BmiDetailsViewModel>(R.layout.fragment_b
 
         btnShare.setOnClickListener {
             saveAndShareScreenShot()
+        }
+
+        btnRate.setOnClickListener {
+            requireContext().openApplication(
+                packageName = getString(R.string.google_play_package),
+                pageUrl = getString(R.string.google_play_url)
+            )
         }
     }
 
