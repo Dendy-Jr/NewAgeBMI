@@ -9,6 +9,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
@@ -55,7 +56,9 @@ class BmiCalculateFragment : BaseFragment<BmiCalculateViewModel>(R.layout.fragme
         }
 
         btnCalculate.setOnClickListener {
-            showInterstitialAd()
+            if (binding.editText.text.isNullOrBlank().not()) {
+                showInterstitialAd()
+            }
         }
 
         editText.addTextChangedListener { editText ->
@@ -109,6 +112,7 @@ class BmiCalculateFragment : BaseFragment<BmiCalculateViewModel>(R.layout.fragme
                 override fun onAdLoaded(interstitialAd: InterstitialAd) {
                     Timber.d("Ad was loaded.")
                     mInterstitialAd = interstitialAd
+                    closeInterstitialAd()
                 }
             })
     }
@@ -116,10 +120,17 @@ class BmiCalculateFragment : BaseFragment<BmiCalculateViewModel>(R.layout.fragme
     private fun showInterstitialAd() {
         if (mInterstitialAd != null) {
             mInterstitialAd?.show(requireActivity())
-            mInterstitialAd = null
-        } else if (binding.editText.text.isNullOrBlank().not()) {
-            viewModel.toCalculateClicked()
+        } else {
             Timber.d("The interstitial ad wasn't ready yet.")
+        }
+    }
+
+    private fun closeInterstitialAd() {
+        mInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
+            override fun onAdDismissedFullScreenContent() {
+                mInterstitialAd = null
+                viewModel.toCalculateClicked()
+            }
         }
     }
 }
