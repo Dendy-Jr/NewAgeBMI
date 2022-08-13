@@ -1,14 +1,11 @@
 package com.olehvynnytskyi.android.bmi.presentation.details
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.text.buildSpannedString
 import androidx.core.view.drawToBitmap
@@ -36,13 +33,7 @@ class BmiDetailsFragment : BaseFragment<BmiDetailsViewModel>(R.layout.fragment_b
     override val viewModel: BmiDetailsViewModel by viewModels()
 
     private val args: BmiDetailsFragmentArgs by navArgs()
-
     private val defaultFileName = "BMI" + System.currentTimeMillis() + ".jpeg"
-
-    private val requestLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
-            if (isGranted) saveAndShareScreenShot()
-        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -79,32 +70,16 @@ class BmiDetailsFragment : BaseFragment<BmiDetailsViewModel>(R.layout.fragment_b
     }
 
     private fun saveAndShareScreenShot() {
-        if (isStoragePermissionGranted().not()) {
-            requestLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-            return
-        }
-
-        binding.cardView.drawToBitmap().let {
+        val imageUri = binding.cardView.drawToBitmap().let {
             saveBitmapToCache(it)
         }
 
         val intent = Intent(Intent.ACTION_SEND)
+        intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+        intent.putExtra(Intent.EXTRA_STREAM, imageUri)
         intent.type = "image/jpeg"
-        intent.putExtra(
-            Intent.EXTRA_STREAM,
-            FileProvider.getUriForFile(
-                requireContext(), getString(R.string.authorities_fileprovider),
-                File(requireContext().cacheDir, defaultFileName)
-            )
-        )
-        startActivity(Intent.createChooser(intent, null))
+        startActivity(intent)
     }
-
-    private fun isStoragePermissionGranted(): Boolean =
-        ContextCompat.checkSelfPermission(
-            requireContext(),
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-        ) == PackageManager.PERMISSION_GRANTED
 
     private fun setResult(result: Double) {
         binding.tvFractionalResult.text = buildSpannedString {
@@ -146,11 +121,16 @@ class BmiDetailsFragment : BaseFragment<BmiDetailsViewModel>(R.layout.fragment_b
         adIcon.setImageDrawable(nativeAd.icon?.drawable)
     }
 
-    private fun saveBitmapToCache(bitmap: Bitmap) {
+    private fun saveBitmapToCache(bitmap: Bitmap): Uri {
         val cacheFile = File(requireContext().cacheDir, defaultFileName)
         val outputStream = FileOutputStream(cacheFile)
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
         outputStream.flush()
-        outputStream.close()
+
+        return FileProvider.getUriForFile(
+            requireContext(),
+            getString(R.string.authorities_fileprovider),
+            cacheFile
+        )
     }
 }
