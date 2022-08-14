@@ -1,10 +1,8 @@
 package com.olehvynnytskyi.android.bmi.presentation.calculate
 
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -68,15 +66,6 @@ class BmiCalculateFragment : BaseFragment<BmiCalculateViewModel>(R.layout.fragme
 
         npWeight.setOnValueChangedListener { _, _, newValue ->
             viewModel.getWeight(newValue)
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            npWeight.selectionDividerHeight = 0
-            npHeight.selectionDividerHeight = 0
-            npGender.selectionDividerHeight = 0
-
-            viewWeight.isVisible = true
-            viewHeight.isVisible = true
-            viewGender.isVisible = true
         }
 
         npHeight.setOnValueChangedListener { _, _, newValue ->
